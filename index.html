@@ -4,11 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nour academy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Nour academy</h1>
-    <p>Portail d'inscription : bientôt disponible.</p>
-    <script src="script.js"></script>
+   
+   <header>
+       <img class="logo" src="photos NA/logo.png" alt="Nour academy logo">
+       <nav class="menu">
+       <a class="active" href="#accueil">Accueil</a>
+       <a href="#cours">Nos cours</a>
+       <a href="#propos">À propos</a>
+       <a href="#inscription">Inscription</a>
+       </nav>
+   </header>
+   <main>
+    <section id="accueil" class="hero">
+        <img class="Optimistic" src="photos NA/Optimistic Student with Books in Blue Academic Scene.png" alt="Optimistic Student with Books in Blue Academic">
+        <div class="hero-text">
+            <p class="hero-text-1">SOUTIEN SCOLAIRE ET LANGUES À NADOR</p>
+            <h1 class="hero-text-2">Réussir aujourd’hui, construire demain</h1>
+            <p class="hero-text-3">Des cours de qualité pour tous les niveaux, du primaire au Bac . Primaire · Collège · Lycée · Langues</p>
+        </div>
+    </section>
+    <section id="cours" class="cours">
+        <div class="titre-cours">
+           <h2 class="titre-1">Nos cours</h2>
+           <p class="titre-2">Quelques cours que nous proposons</p>
+        </div>
+        <div class="filtres">
+           <select name="matiere" id="filtre-matiere">
+               <option value="Tout">Toutes les matières</option>
+               <option value="Maths">Maths</option>
+               <option value="Physique">Physique</option>
+               <option value="Anglais">Anglais</option>
+               <option value="Français">Français</option>
+               <option value="SVT">SVT</option>
+               <option value="Arabe">Arabe</option>
+           </select>
+           <select name="niveau" id="filtre-niveau">
+              <option value="Tout">Tous les niveaux</option>
+              <option value="6ème Primaire">6ème Primaire</option>
+              <option value="3ème Collège">3ème Collège</option>
+              <option value="1ère Bac">1ère Bac</option>
+              <option value="2ème Bac">2ème Bac</option>
+           </select>
+        </div>
+        <p class="nombre-resultats" id="nombre-resultats"></p>
+        <div id="cart-cours" class="cart-cours"></div>
+    </section>
+    <section id="selection" class="selection">
+        <h2>Mes cours sélectionnés</h2>
+        <div id="cours-selectionnes"></div>
+        <p>Total  : <span id="total">0</span>DH/mois</p>
+    </section>
+    <script src="js/script.js"></script>
+   </main>
 </body>
+
 </html>
