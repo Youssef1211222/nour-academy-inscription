@@ -108,6 +108,7 @@ const courses = [
         places: 11
     }
 ];
+let coursSelectionnes = [];
 
 const container = document.querySelector("#cart-cours");
 
@@ -137,7 +138,6 @@ const niveau = document.getElementById("filtre-niveau").value;
         clickbutton = "disabled"
         stylbutton = "no-ok"
     }
-   
     container.innerHTML += `
     <div class="card">
     <div class="card-title">
@@ -155,26 +155,368 @@ const niveau = document.getElementById("filtre-niveau").value;
     <span class="card-icon">🏷️</span>
     <span class="card-badge">${courses[i].prix}  DH</span>
     </div>
-    
     <p class="card-places ${coulur}"> places   ${courses[i].places}</p>
-    
     <button data-id="${courses[i].id}" class="card-btn ${coulur} ${stylbutton}" type="button" ${clickbutton}>${buton}</button>
     </div>
     
     `
   }
-  document.getElementById("nombre-resultats").textContent = compteur + "  cours trouvés"
+let resultat = document.getElementById("nombre-resultats");
+
+if (compteur === 0) {
+    resultat.textContent = "Aucun cours trouvé";
+    resultat.classList.add("aucun-resultat");
+} else {
+    resultat.textContent = compteur + " cours trouvés";
+    resultat.classList.remove("aucun-resultat");
+}
 }
 afficherCours()
 
 container.addEventListener("click", function(event) {
         if (event.target.classList.contains("card-btn")) {
-            let id = event.target.dataset.id;
+            let id = Number(event.target.dataset.id);
+            let cours = courses.find(function(element) {
+            return element.id === Number(id);
+        });
+        let existe = false ;
+        for ( let i = 0 ; i < coursSelectionnes.length ; i ++) {
+            if (coursSelectionnes[i].id === cours.id) {
+                existe = true;
+                break;
+            }
+        }
+            if (existe === false && cours.places > 0) {
+                coursSelectionnes.push(cours)
+                cours.places--;
+                afficherSelection();
+                afficherCours();
+            }   
+        }
 
-            console.log(id)
+    });
+
+
+function afficherSelection() {
+
+    let selection = document.getElementById("cours-selectionnes");
+
+    selection.innerHTML = "";
+    for (let i = 0 ; i < coursSelectionnes.length ; i ++) {
+
+        selection.innerHTML += `
+            <div class="cours-choisi">
+                <p>${coursSelectionnes[i].title} :</p>
+                <p>${coursSelectionnes[i].prix} DH/mois</p>
+
+            <button
+                class="btn-supprimer"
+                data-id="${coursSelectionnes[i].id}"
+                type="button">
+                Suppr
+            </button>
+            </div>
+        `
+    }
+    let total = 0 
+    for ( let i = 0 ; i < coursSelectionnes.length ; i ++) {
+        total += coursSelectionnes[i].prix
+    }
+    document.getElementById("total").textContent = total
+
+}
+
+const selectionContainer = document.getElementById("cours-selectionnes");
+
+selectionContainer.addEventListener("click", function(event) {
+    if (event.target.classList.contains("btn-supprimer")) {
+        let id = Number(event.target.dataset.id);
+    
+    for ( let i = 0 ; i < coursSelectionnes.length ; i ++) {
+        if (coursSelectionnes[i].id === id) {
+            coursSelectionnes.splice(i , 1)
+            break
         }
     }
-);
+}
+    afficherSelection();
+})
+
+const parent = document.getElementById("nom-parent")
+
+parent.addEventListener("input", function(event) {
+    let parentname = event.target.value
+    let virifie = document.getElementById("erreur-nom")
+    if (parentname.trim() === "") {
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        parent.classList.add("invalide")
+        parent.classList.remove("valide")
+        virifie.textContent = "Le nom est obligatoire"
+    }else {
+        virifie.classList.add("succes")
+        virifie.classList.remove("erreur")
+        parent.classList.add("valide")
+        parent.classList.remove("invalide")
+        virifie.textContent = "Nom valide"
+    }
+})
+
+const email = document.getElementById("email")
+let Emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+email.addEventListener("input", function(event) {
+    let emailuser = event.target.value
+    
+    let virifie = document.getElementById("erreur-email")
+    if (Emailregex.test(emailuser) === true) {
+        virifie.textContent = "Email valide"
+        virifie.classList.add("succes")
+        virifie.classList.remove("erreur")
+        email.classList.add("valide")
+        email.classList.remove("invalide")
+    }else {
+        virifie.textContent = "Email invalide"
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        email.classList.add("invalide")
+        email.classList.remove("valide")
+    }
+})
+
+const telephone = document.getElementById("telephone")
+let Numeroregex = /^(0[67][0-9]{8}|\+212[67][0-9]{8})$/
+telephone.addEventListener("input", function(event) {
+    let numeroTelephone = event.target.value
+    
+    let virifie = document.getElementById("erreur-telephone")
+    if ( Numeroregex.test(numeroTelephone) === true) {
+        virifie.textContent = "Numero téléphone valide"
+        virifie.classList.add("succes")
+        virifie.classList.remove("erreur")
+        telephone.classList.add("valide")
+        telephone.classList.remove("invalide")
+    }else {
+        virifie.textContent = "Numero téléphone invalide"
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        telephone.classList.add("invalide")
+        telephone.classList.remove("valide")
+    }
+})
+
+const eleve = document.getElementById("prenom-eleve")
+
+eleve.addEventListener("input", function(event) {
+    let elevename = event.target.value
+    let virifie = document.getElementById("erreur-prenom")
+    if (elevename.trim() === "") {
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        eleve.classList.add("invalide")
+        eleve.classList.remove("valide")
+        virifie.textContent = "Le Prénom est obligatoire"
+    }else {
+        virifie.classList.add("succes")
+        virifie.classList.remove("erreur")
+        eleve.classList.add("valide")
+        eleve.classList.remove("invalide")
+        virifie.textContent = "Prénom valide"
+    }
+})
+
+
+const niveau = document.getElementById("niveau-eleve")
+
+niveau.addEventListener("change", function(event) {
+    let niveaueleve = event.target.value
+    let virifie = document.getElementById("erreur-niveau")
+    if (niveaueleve === "") {
+        virifie.textContent = "Veuillez faire un choix, s'il vous plaît."
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        niveau.classList.add("invalide")
+        niveau.classList.remove("valide")
+    }else{
+        virifie.textContent = "Niveau valide"
+        virifie.classList.add("succes")
+        virifie.classList.remove("erreur")
+        niveau.classList.add("valide")
+        niveau.classList.remove("invalide")
+    }
+})
+
+const password = document.getElementById("password")
+let passwordregex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/
+password.addEventListener("input", virifierconfirmation )
+
+const confirmation = document.getElementById("confirmation")
+
+confirmation.addEventListener("input", virifierconfirmation )
+function virifierconfirmation () {
+    let userpassword = password.value
+    let virifie = document.getElementById("erreur-password")
+    if (passwordregex.test(userpassword) === true) {
+        virifie.textContent = "Password valide"
+        virifie.classList.add("succes")
+        virifie.classList.remove("erreur")
+        password.classList.add("valide")
+        password.classList.remove("invalide")
+    }else {
+        virifie.textContent = "8 caractères minimum, une majuscule, un chiffre et un caractère spécial."
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        password.classList.add("invalide")
+        password.classList.remove("valide")
+    }
+    let confirmationpass = confirmation.value
+    let virifie2 = document.getElementById("erreur-confirmation")
+    if (confirmationpass === password.value && passwordregex.test(password.value) === true ) {
+        virifie2.textContent = "Password confirme"
+        virifie2.classList.add("succes")
+        virifie2.classList.remove("erreur")
+        confirmation.classList.add("valide")
+        confirmation.classList.remove("invalide")
+    }else {
+        virifie2.textContent = "Password invalide"
+        virifie2.classList.add("erreur")
+        virifie2.classList.remove("succes")
+        confirmation.classList.add("invalide")
+        confirmation.classList.remove("valide")
+    }
+}
+
+const consentement = document.getElementById("consentement")
+
+consentement.addEventListener("change", function() {
+    let virifie = document.getElementById("erreur-consentement")
+    if (consentement.checked === false) {
+        virifie.classList.add("erreur")
+        virifie.classList.remove("succes")
+        virifie.textContent = "Vous devez accepter le traitement des données personnelles."
+    } else {
+        virifie.textContent = ""
+        virifie.classList.remove("erreur")
+    }
+})
+
+const formulaire = document.getElementById("form-inscription")
+formulaire.addEventListener("submit", function(event) {
+    let virifie1 = document.getElementById("erreur-nom")
+    let virifie2 = document.getElementById("erreur-email")
+    let virifie3 = document.getElementById("erreur-telephone")
+    let virifie4 = document.getElementById("erreur-prenom")
+    let virifie5 = document.getElementById("erreur-niveau")
+    let virifie6 = document.getElementById("erreur-password")
+    let virifie7 = document.getElementById("erreur-confirmation")
+    let virifie8 = document.getElementById("erreur-consentement")
+    let premierChampInvalide = null;
+    event.preventDefault()
+
+if (parent.value.trim() === "") {
+        if (premierChampInvalide === null){
+            premierChampInvalide = parent
+        }
+        virifie1.classList.add("erreur")
+        virifie1.classList.remove("succes")
+        parent.classList.add("invalide")
+        parent.classList.remove("valide")
+        virifie1.textContent = "Le nom est obligatoire"
+    }
+    if (Emailregex.test(email.value) === false) {
+        if (premierChampInvalide === null){
+            premierChampInvalide = email
+        }
+        virifie2.textContent = "Email invalide"
+        virifie2.classList.add("erreur")
+        virifie2.classList.remove("succes")
+        email.classList.add("invalide")
+        email.classList.remove("valide")
+    }
+    if (Numeroregex.test(telephone.value) === false) {
+        if (premierChampInvalide === null){
+            premierChampInvalide = telephone
+        }
+        virifie3.textContent = "Numero téléphone invalide"
+        virifie3.classList.add("erreur")
+        virifie3.classList.remove("succes")
+        telephone.classList.add("invalide")
+        telephone.classList.remove("valide")
+    }
+    if (eleve.value.trim() === "") {
+        if (premierChampInvalide === null){
+            premierChampInvalide = eleve
+        }
+        virifie4.classList.add("erreur")
+        virifie4.classList.remove("succes")
+        eleve.classList.add("invalide")
+        eleve.classList.remove("valide")
+        virifie4.textContent = "Le Prénom est obligatoire"
+    }
+    if(niveau.value === "") {
+        if (premierChampInvalide === null){
+            premierChampInvalide = niveau
+        }
+        virifie5.textContent = "Veuillez faire un choix, s'il vous plaît."
+        virifie5.classList.add("erreur")
+        virifie5.classList.remove("succes")
+        niveau.classList.add("invalide")
+        niveau.classList.remove("valide")
+    }
+    if (passwordregex.test(password.value) === false) {
+        if (premierChampInvalide === null){
+            premierChampInvalide = password
+        }
+        virifie6.textContent = "8 caractères minimum, une majuscule, un chiffre et un caractère spécial."
+        virifie6.classList.add("erreur")
+        virifie6.classList.remove("succes")
+        password.classList.add("invalide")
+        password.classList.remove("valide")
+    }
+    if (password.value !== confirmation.value || passwordregex.test(password.value) === false) {
+        if (premierChampInvalide === null){
+            premierChampInvalide = confirmation
+        }
+        virifie7.textContent = "Password invalide"
+        virifie7.classList.add("erreur")
+        virifie7.classList.remove("succes")
+        confirmation.classList.add("invalide")
+        confirmation.classList.remove("valide")
+    }
+    if (consentement.checked === false) {
+        if (premierChampInvalide === null) {
+            premierChampInvalide = consentement
+        }
+        virifie8.classList.add("erreur")
+        virifie8.classList.remove("succes")
+        virifie8.textContent = "Vous devez accepter le traitement des données personnelles."
+    }
+        
+    if (premierChampInvalide !== null) {
+        premierChampInvalide.focus()
+        return
+    }
+    if (coursSelectionnes.length === 0) {
+    let fcours = document.getElementById("cours")
+    fcours.scrollIntoView()
+    return
+}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 document.getElementById("filtre-matiere").addEventListener("change", afficherCours)
 document.getElementById("filtre-niveau").addEventListener("change", afficherCours)

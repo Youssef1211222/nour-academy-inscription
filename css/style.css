@@ -39,6 +39,7 @@ header {
     height: 100px;
     object-fit: cover;
     margin: 5px;
+    border-radius: 8px;
 }
 .hero{
     position: relative;
@@ -83,7 +84,6 @@ header {
     justify-content: space-evenly;
 }
 .filtres select{
-    
     font-size: 15px;
     color: var(--color-a);
     font-family: unset;
@@ -113,8 +113,8 @@ header {
     font-family: serif;
     font-size: 20px;
     letter-spacing: 1px;
-    color: var(--color-b);
-    background-color: var(--color-M);
+    color: var(--color-M);
+    background-color: var(--color-b);
     height: 25px;
     width: 200px;
     border-radius: 8px;
@@ -125,12 +125,13 @@ header {
     align-items: center;
 }
 .card-niveau {
-    font-size: smaller;
+    font-size: 15px;
     letter-spacing: 2px;
+    color: var(--color-a);
 }
 .card-info {
     display: flex;
-    gap: 5px;
+    margin: 5px;
 }
 button {
     padding: 8px;
@@ -158,10 +159,10 @@ button {
 }
 .nombre-resultats {
     font-size: medium;
-    color: var(--color-a);
+    color: var(--color-F);
     letter-spacing: 1.5px;
     margin-left: 115px;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .selection {
     text-align: center;
@@ -175,12 +176,88 @@ button {
     letter-spacing: 1.5px;
     font-weight: lighter;
     color: var(--color-b);
-    background-color: var(--color-F);
+    background-color: var(--color-E);
     margin-inline: 10px;
     border-radius: 15px;
 }
 .selection p {
     color: var(--color-a);
 }
+.cours {
+    background-color: var(--color-b);
+}
 
+.cours-choisi {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 10px;
+    font-size: small;
+    align-items: center ;
+    border-bottom: solid ;
+}
+.cours-choisi p {
+    color: var(--color-d);
+}
+.btn-supprimer {
+    width: 60px;
+    height: 35px;
+    background-color: crimson;
+    color: var(--color-b);
+    border-radius: 30px;
+    border-color: red;
+    font-size: 12px;
+}
+.form-i {
+    display: flex;
+    flex-direction: column;
+}
+.aucun-resultat {
+    color: red;
+    margin-inline: 100px;
+}
+.inscription {
+    background-color: var(--color-c);
+    padding: 15px;
+    border-radius: 25px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group input{
+    border-radius: 5px;
+    margin: 15px;
+    height: 20px;
+}
+.form-group label {
+    color: var(--color-d);
+    margin: 15px;
 
+}
+.form-group small {
+    margin-inline: 15px;
+}
+.form-group select {
+    margin-inline: 15px;
+    height: 20px;
+}
+.form-group button {
+    border-radius: 30px;
+    background-color: var(--color-F);
+    margin: 0 auto;
+    color: var(--color-b);
+    font-size: 14px;
+    border-color: var(--color-a);
+}
+.valide {
+    border-color: green;
+}
+.invalide {
+    border-color: red;
+}
+.erreur {
+    color: red;
+}
+.succes {
+    color: green;
+}

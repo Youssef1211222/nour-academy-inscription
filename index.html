@@ -57,6 +57,54 @@
         <div id="cours-selectionnes"></div>
         <p>Total  : <span id="total">0</span>DH/mois</p>
     </section>
+    <section id="inscription" class="inscription">
+    <h2>Formulaire d'inscription</h2>
+
+    <form id="form-inscription" novalidate>
+    <div class="form-group">
+        <label for="nom-parent">Nom du parent</label>
+        <input type="text" id="nom-parent" required>
+        <small id="erreur-nom"></small>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        <small id="erreur-email"></small>
+
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" required>
+        <small id="erreur-telephone"></small>
+
+        <label for="prenom-eleve">Prénom de l'élève</label>
+        <input type="text" id="prenom-eleve" required>
+        <small id="erreur-prenom"></small>
+
+        <label for="niveau-eleve">Niveau de l'élève</label>
+        <select id="niveau-eleve" required>
+            <option value="">Choisir un niveau</option>
+            <option value="6ème Primaire">6ème Primaire</option>
+            <option value="3ème Collège">3ème Collège</option>
+            <option value="1ère Bac">1ère Bac</option>
+            <option value="2ème Bac">2ème Bac</option>
+        </select>
+        <small id="erreur-niveau"></small>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" required>
+        <small id="erreur-password"></small>
+
+        <label for="confirmation">Confirmer le mot de passe</label>
+        <input type="password" id="confirmation" required>
+        <small id="erreur-confirmation"></small>
+
+        <label for="consentement">
+            <input type="checkbox" id="consentement" required>
+            J'accepte le traitement de mes données personnelles pour ma demande d'inscription.
+        </label>
+        <small id="erreur-consentement"></small>
+        <button type="submit">Envoyer l'inscription</button>
+        </div>
+    </form>
+</section>
     <script src="js/script.js"></script>
    </main>
 </body>
