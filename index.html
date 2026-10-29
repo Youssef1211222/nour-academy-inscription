@@ -13,7 +13,7 @@
        <nav class="menu">
        <a class="active" href="#accueil">Accueil</a>
        <a href="#cours">Nos cours</a>
-       <a href="#propos">À propos</a>
+       <a href="#selection">selection</a>
        <a href="#inscription">Inscription</a>
        </nav>
    </header>
@@ -29,7 +29,8 @@
     <section id="cours" class="cours">
         <div class="titre-cours">
            <h2 class="titre-1">Nos cours</h2>
-           <p class="titre-2">Quelques cours que nous proposons</p>
+           <p class="titre-2">Choisissez les cours Choisissez les cours</p>
+           
         </div>
         <div class="filtres">
            <select name="matiere" id="filtre-matiere">
@@ -50,6 +51,7 @@
            </select>
         </div>
         <p class="nombre-resultats" id="nombre-resultats"></p>
+        <p class="erreur-cours" id = "erreur-cours"></p>
         <div id="cart-cours" class="cart-cours"></div>
     </section>
     <section id="selection" class="selection">
@@ -81,10 +83,9 @@
         <label for="niveau-eleve">Niveau de l'élève</label>
         <select id="niveau-eleve" required>
             <option value="">Choisir un niveau</option>
-            <option value="6ème Primaire">6ème Primaire</option>
-            <option value="3ème Collège">3ème Collège</option>
-            <option value="1ère Bac">1ère Bac</option>
-            <option value="2ème Bac">2ème Bac</option>
+            <option value="Primaire">Primaire</option>
+            <option value="Collège">Collège</option>
+            <option value="Las">Lycée</option>
         </select>
         <small id="erreur-niveau"></small>
 
@@ -104,6 +105,9 @@
         <button type="submit">Envoyer l'inscription</button>
         </div>
     </form>
+</section>
+<section class="part-recapitulatif">
+    <div id="recapitulatif" class="recapitulatif"></div>
 </section>
     <script src="js/script.js"></script>
    </main>

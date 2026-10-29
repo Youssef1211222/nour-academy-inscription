@@ -108,6 +108,8 @@ const courses = [
         places: 11
     }
 ];
+
+
 let coursSelectionnes = [];
 
 const container = document.querySelector("#cart-cours");
@@ -188,7 +190,6 @@ container.addEventListener("click", function(event) {
         }
             if (existe === false && cours.places > 0) {
                 coursSelectionnes.push(cours)
-                cours.places--;
                 afficherSelection();
                 afficherCours();
             }   
@@ -495,12 +496,35 @@ if (parent.value.trim() === "") {
         premierChampInvalide.focus()
         return
     }
+    let erreur = document.getElementById("erreur-cours")
     if (coursSelectionnes.length === 0) {
+    
     let fcours = document.getElementById("cours")
     fcours.scrollIntoView()
+    erreur.textContent = "Veuillez sélectionner au moins un cours"
     return
-}
+   } else {
+    erreur.textContent = ""
+   }
+
+   let recapitulatif = document.getElementById("recapitulatif")
+       recapitulatif.style.display = "block"
+       let listeCours = ""
+       coursSelectionnes.forEach(function(cours) {
+       listeCours += cours.title + " - " +  "<br>"
+       })
+  
+       recapitulatif.innerHTML = `
+    
+    <h3 class = "title-inscription">Inscription réussie !</h3>
+    <p>Prénom de l'élève : ${eleve.value}</p>
+    <p>Cours sélectionnés</p>
+    <p class = "addcours">${listeCours}</p>
+    
+`
 })
+
+
 
 
 
