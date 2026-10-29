@@ -301,8 +301,114 @@ button {
     margin-bottom: 20px;
 
 }
+.i-prenom {
+    font-size: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    color: #0F172A;
+}
 
 .cours-a {
     display: flex;
     justify-content: space-between;
 }
+.total-recap {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-top: 15px;
+    border-top: 2px solid #ddd;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.addcours {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.ligne-cours {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #dce6f5;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ligne-cours span:last-child {
+    white-space: nowrap;
+    font-weight: bold;
+    color: #26733a;
+}
+.i-cours {
+    color: var(--color-a);
+    font-size: 18px;
+}
+
+
+footer {
+    background-color: white;
+    padding: 40px 20px 0;
+    margin-top: 50px;
+    border-radius: 8px;
+    border: solid #cccc;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bs h2 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    color: var(--color-d);
+}
+
+.bs h4 {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--color-d);
+    margin: 5px 0;
+}
+
+.bs a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-d);
+    width: fit-content;
+}
+
+.bs a h4 {
+    transition: color 0.3s ease;
+}
+
+
+
+.cr {
+    border-top: 1px solid #344b68;
+    margin-top: 35px;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.cr p {
+    font-size: 13px;
+    color: #94a3b8;
+    margin: 0;
+}
+
+
+

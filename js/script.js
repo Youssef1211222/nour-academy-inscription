@@ -510,17 +510,27 @@ if (parent.value.trim() === "") {
    let recapitulatif = document.getElementById("recapitulatif")
        recapitulatif.style.display = "block"
        let listeCours = ""
-       coursSelectionnes.forEach(function(cours) {
-       listeCours += cours.title + " - " +  "<br>"
-       })
+let total = 0
+coursSelectionnes.forEach(function(cours) {
+    listeCours += `
+        <div class="ligne-cours">
+            <span>${cours.title}</span>
+            <span>${cours.prix} DH</span>
+        </div>
+    `
+    total += cours.prix
+})
   
        recapitulatif.innerHTML = `
     
     <h3 class = "title-inscription">Inscription réussie !</h3>
-    <p>Prénom de l'élève : ${eleve.value}</p>
-    <p>Cours sélectionnés</p>
-    <p class = "addcours">${listeCours}</p>
-    
+    <p class = "i-prenom">Prénom de l'élève : ${eleve.value}</p>  
+    <p class = "i-cours">Cours sélectionnés</p>
+    <div class="addcours">${listeCours}</div>
+    <div class="total-recap">
+    <strong>Total mensuel :</strong>
+    <strong>${total} DH</strong>
+    </div>
 `
 })
 
