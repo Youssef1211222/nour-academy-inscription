@@ -11,9 +11,9 @@
    <header>
        <img class="logo" src="photos NA/logo.png" alt="Nour academy logo">
        <nav class="menu">
-       <a class="active" href="#accueil">Accueil</a>
+       <a href="#accueil">Accueil</a>
        <a href="#cours">Nos cours</a>
-       <a href="#propos">À propos</a>
+       <a href="#selection">selection</a>
        <a href="#inscription">Inscription</a>
        </nav>
    </header>
@@ -29,7 +29,8 @@
     <section id="cours" class="cours">
         <div class="titre-cours">
            <h2 class="titre-1">Nos cours</h2>
-           <p class="titre-2">Quelques cours que nous proposons</p>
+           <p class="titre-2">Choisissez les cours Choisissez les cours</p>
+           
         </div>
         <div class="filtres">
            <select name="matiere" id="filtre-matiere">
@@ -50,6 +51,7 @@
            </select>
         </div>
         <p class="nombre-resultats" id="nombre-resultats"></p>
+        <p class="erreur-cours" id = "erreur-cours"></p>
         <div id="cart-cours" class="cart-cours"></div>
     </section>
     <section id="selection" class="selection">
@@ -57,8 +59,83 @@
         <div id="cours-selectionnes"></div>
         <p>Total  : <span id="total">0</span>DH/mois</p>
     </section>
+    <section id="inscription" class="inscription">
+    <h2>Formulaire d'inscription</h2>
+
+    <form id="form-inscription" novalidate>
+    <div class="form-group">
+        <label for="nom-parent">Nom du parent</label>
+        <input type="text" id="nom-parent" required>
+        <small id="erreur-nom"></small>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        <small id="erreur-email"></small>
+
+        <label for="telephone">Téléphone</label>
+        <input type="tel" id="telephone" required>
+        <small id="erreur-telephone"></small>
+
+        <label for="prenom-eleve">Prénom de l'élève</label>
+        <input type="text" id="prenom-eleve" required>
+        <small id="erreur-prenom"></small>
+
+        <label for="niveau-eleve">Niveau de l'élève</label>
+        <select id="niveau-eleve" required>
+            <option value="">Choisir un niveau</option>
+            <option value="Primaire">Primaire</option>
+            <option value="Collège">Collège</option>
+            <option value="Las">Lycée</option>
+        </select>
+        <small id="erreur-niveau"></small>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" required>
+        <small id="erreur-password"></small>
+
+        <label for="confirmation">Confirmer le mot de passe</label>
+        <input type="password" id="confirmation" required>
+        <small id="erreur-confirmation"></small>
+
+        <label for="consentement">
+            <input type="checkbox" id="consentement" required>
+            J'accepte le traitement de mes données personnelles pour ma demande d'inscription.
+        </label>
+        <small id="erreur-consentement"></small>
+        <button type="submit">Envoyer l'inscription</button>
+        </div>
+    </form>
+</section>
+<section class="part-recapitulatif">
+    <div id="recapitulatif" class="recapitulatif"></div>
+</section>
     <script src="js/script.js"></script>
    </main>
 </body>
+     <footer>
+    <main>
+        <div class="bs">
+             <h2>Nour Academy</h2>
+             <h4>Apprendre aujourd'hui</h4>
+             <h4>pour un meilleur demain</h4>
+        </div>
+        <nav class="bs">
+            <h2>Navigation</h2>
+            <a href="#Accueil"><h4>Accueil</h4></a>
+            <a href="#cours"><h4>Nos cours</h4></a>
+            <a href="#selection"><h4>selection</h4></a>
+            <a href="#Inscription"><h4>Inscription</h4></a>
+        </nav>
+        <div class="bs">
+            <h2>Contact</h2>
+            <h4>contact@nour-academy.ma</h4>
+            <h4>+212 6 12 34 56 78</h4>
+            <h4>Nador, Maroc</h4>
+        </div>
+    </main>
+    <div class="cr">
+        <p>© 2026 Nour Academy. Tous droits réservés</p>
+    </div>
+    </footer>
 
 </html>
