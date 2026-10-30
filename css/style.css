@@ -409,6 +409,59 @@ footer {
     color: #94a3b8;
     margin: 0;
 }
-
+@media (min-width: 1024px) {
+    .inscription {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    .footer-content {
+        display: flex;
+        justify-content: center;
+    }
+    footer main {
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+    }
+    .bs {
+        text-align: center;
+    }
+    .cart-cours {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .selection {
+        max-width: 700px;
+        margin: 0 auto;
+        margin-bottom: 25px;
+    }
+    .Optimistic {
+        height: 300px;
+        object-fit: cover;
+    }
+    .hero-text {
+        margin-top: 40px;
+    }
+    .hero-text-1 {
+        font-size: 20px;
+    }
+    .hero-text-2 {
+        font-size: 50px;
+    }
+    .hero-text-3 {
+        font-size: 20px;
+    }
+    header {
+        padding:15px;
+    }
+    .logo {
+        height: 100px;
+        width: 100px;
+    }
+    .menu {
+        gap: 35px;
+        font-size: 20px;
+    }
+}
 
 
